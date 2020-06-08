@@ -1,0 +1,4 @@
+export const CurrencyActionTypes = {
+  SET_CURRENCY: 'SET_CURRENCY',
+  SET_CURRENCY_LANG_CODE: 'SET_CURRENCY_LANG_CODE'
+};
