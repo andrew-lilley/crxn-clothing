@@ -11,6 +11,7 @@ export const Price = ({ price, label, langCode }) => {
   const convertPrice = (price) => {
 
     // Hard code in an fx rate to demo the currency swap.
+    // todo - fetch from a fx exchange API.
     let fx_rate = 0;
     if (langCode === 'en-gb') {
       fx_rate = 0.79;
