@@ -2,7 +2,7 @@ import { CurrencyActionTypes } from './currency.types';
 
 const INITIAL_STATE = {
   langCode: 'en-gb',
-  currency: 'GBP'
+  currency: '£'
 };
 
 const currencyReducer = (state = INITIAL_STATE, action) => {
