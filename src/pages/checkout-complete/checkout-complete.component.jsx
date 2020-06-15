@@ -1,15 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { emptyCart } from '../../redux/cart/cart.actions';
-
-import './checkout-complete.styles.scss';
+import { CheckoutCompleteContainer, CheckoutCompleteTitle } from './checkout-complete.styles';
 
 const CheckoutCompletePage = ({ emptyCart }) => (
-  <div className='checkout-complete' onLoad={() => emptyCart()}>
-    <h1 className='title'>Order Complete</h1>
+  <CheckoutCompleteContainer onLoad={() => emptyCart()}>
+    <CheckoutCompleteTitle>Order Complete</CheckoutCompleteTitle>
     <p>Your payment has been successful.</p>
     <p>Thank you for placing your order with CRXN Clothing.</p>
-  </div>
+  </CheckoutCompleteContainer>
 )
 
 const mapDispatchToProps = dispatch => ({

@@ -5,7 +5,13 @@ import { selectCartItems, selectCartTotal } from '../../redux/cart/cart.selector
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
 import Price from '../../components/price/price.component';
 import StripeCheckoutButton from '../../components/stripe-button/stripe-button.component';
-import './checkout.styles.scss';
+import {
+  CheckoutPageContainer,
+  CheckoutHeaderContainer,
+  HeaderBlockContainer,
+  TotalContainer,
+  WarningContainer
+} from './checkout.styles';
 
 export const CheckoutPage = ({ cartItems, cartTotal, history }) => {
 
@@ -13,42 +19,42 @@ export const CheckoutPage = ({ cartItems, cartTotal, history }) => {
   const validTestCardYear = (new Date().getFullYear() + 1).toString().substr(-2);
 
   return (
-    <div className='checkout-page'>
-      <div className='checkout-header'>
-        <div className='header-block'>
+    <CheckoutPageContainer>
+      <CheckoutHeaderContainer>
+        <HeaderBlockContainer>
           <span>Product</span>
-        </div>
-        <div className='header-block'>
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Description</span>
-        </div>
-        <div className='header-block'>
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Quantity</span>
-        </div>
-        <div className='header-block'>
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Price</span>
-        </div>
-        <div className='header-block'>
+        </HeaderBlockContainer>
+        <HeaderBlockContainer>
           <span>Remove</span>
-        </div>
-      </div>
+        </HeaderBlockContainer>
+      </CheckoutHeaderContainer>
       {
         cartItems.map(cartItem => 
           <CheckoutItem key={cartItem.id} cartItem={cartItem} />
         )
       }
-      <div className='total'>
+      <TotalContainer>
         <Price price={cartTotal} label='TOTAL' />
-      </div>
-      <div className='test-warning'>
+      </TotalContainer>
+      <WarningContainer>
         <p>This is a demo website. Please only use one the following test credit card details:</p>
         <ul>
           <li>{`Successful payments: 4242 4242 424 24242, Exp: 01/${validTestCardYear}, CVV: 123`}</li>
           <li>{`3D secure payments: 4000 0025 0000 3155, Exp: 01/${validTestCardYear}, CVV: 123`}</li>
           <li>{`Declined payments: 4000 0000 0000 9995, Exp: 01/${validTestCardYear}, CVV: 123`}</li>
         </ul>
-      </div>
+      </WarningContainer>
       <StripeCheckoutButton price={cartTotal} history={history} />
-    </div>
+    </CheckoutPageContainer>
     )
   }
 

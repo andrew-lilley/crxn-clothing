@@ -6,7 +6,7 @@ import { selectActiveCurrencyLangCode, selectActiveCurrency } from '../../redux/
 import { selectCartItems } from '../../redux/cart/cart.selectors';
 import { setCurrency, setCurrencyLangCode } from '../../redux/currency/currency.actions';
 import { setShopData } from '../../redux/shop/shop.actions';
-import './currency-select.styles.scss';
+import { CurrencySelectorContainer } from './currency-select.styles';
 
 const CurrencySelector = ({ cartItems, langCode, currency, dispatch }) => {
 
@@ -38,7 +38,7 @@ const CurrencySelector = ({ cartItems, langCode, currency, dispatch }) => {
   }
 
   return (
-    <div className='currency-selector'>
+    <CurrencySelectorContainer>
       <Select 
         options={options} 
         value={{ label: currency }}
@@ -50,7 +50,7 @@ const CurrencySelector = ({ cartItems, langCode, currency, dispatch }) => {
         }}
         onLoad={dispatch(setShopData(langCode))}
       />
-    </div>
+    </CurrencySelectorContainer>
   )
 }
 

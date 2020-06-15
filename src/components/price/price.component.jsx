@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import numeral from "numeral";
 import 'numeral/locales/en-gb';
 import 'numeral/locales/de';
-import { selectActiveCurrencyLangCode } from '../../redux/currency/currency.selectors'
+import { selectActiveCurrencyLangCode } from '../../redux/currency/currency.selectors';
 
 export const Price = ({ price, label, langCode }) => {
 
@@ -16,10 +16,10 @@ export const Price = ({ price, label, langCode }) => {
   }
 
   return (
-    <span className='price'>
+    <>
       { label && `${label}: `}
       {numeral(price).format('$0,0.00')}
-    </span>
+    </>
   )
 }
 

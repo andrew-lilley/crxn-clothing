@@ -38,8 +38,8 @@ export const StripeCheckoutButton = ({ price, history, langCode, currency }) => 
       billingAddress
       shippingAddress
       zipCode
-      image='https://sendeyo.com/up/d/f3eb2117da'
-      //image='/images/stripe/crown.svg'
+      //image='https://sendeyo.com/up/d/f3eb2117da'
+      image='/images/stripe/crown.svg'
       description={`Your total is ${numeral(price).format('$0,0.00')}`}
       amount={priceForStripe}
       currency={currencyString[currency]}
