@@ -4,7 +4,7 @@ import CustomButton from '../custom-button/custom-button.component';
 export const CartDropdownContainer = styled.div`
   position: absolute;
   width: 240px;
-  max-height: 90vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -30,6 +30,7 @@ export const EmptyMessageContainer = styled.span`
 `;
 
 export const CartItemsContainer = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   overflow: scroll;
