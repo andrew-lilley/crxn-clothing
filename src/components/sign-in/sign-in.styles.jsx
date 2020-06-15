@@ -17,4 +17,15 @@ export const SignInTitle = styled.h2`
 export const ButtonsBarContainer = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  button {
+    @media screen and (max-width: 800px) {
+      margin: 0 0 10px 0;
+    }
+  }
 `;
