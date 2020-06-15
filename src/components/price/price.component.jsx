@@ -8,25 +8,6 @@ import { selectActiveCurrencyLangCode } from '../../redux/currency/currency.sele
 
 export const Price = ({ price, label, langCode }) => {
 
-  const convertPrice = (price) => {
-
-    // Hard code in an fx rate to demo the currency swap.
-    // todo - fetch from a fx exchange API.
-    let fx_rate = 0;
-    if (langCode === 'en-gb') {
-      fx_rate = 0.79;
-    }
-    else if (langCode === 'de') {
-      fx_rate = 0.89;
-    }
-
-    if (fx_rate > 0) {
-      price = Math.ceil(price * fx_rate);
-    }
-
-    return price;
-  }
-
   if (langCode !== 'default') {
     numeral.locale(langCode);
   }
@@ -37,7 +18,7 @@ export const Price = ({ price, label, langCode }) => {
   return (
     <span className='price'>
       { label && `${label}: `}
-      {numeral(convertPrice(price)).format('$0,0.00')}
+      {numeral(price).format('$0,0.00')}
     </span>
   )
 }
