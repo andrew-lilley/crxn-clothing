@@ -4,7 +4,7 @@ import CustomButton from '../custom-button/custom-button.component';
 export const CartDropdownContainer = styled.div`
   position: absolute;
   width: 240px;
-  height: 90vh;
+  max-height: 90vh;
   display: flex;
   flex-direction: column;
   padding: 20px;
