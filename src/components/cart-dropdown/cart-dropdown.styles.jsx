@@ -4,7 +4,7 @@ import CustomButton from '../custom-button/custom-button.component';
 export const CartDropdownContainer = styled.div`
   position: absolute;
   width: 240px;
-  height: 340px;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -13,6 +13,11 @@ export const CartDropdownContainer = styled.div`
   top: 90px;
   right: 40px;
   z-index: 5;
+
+  @media screen and (max-width: 800px) {
+    width: 90vw;
+    right: 15px;
+  }
 `;
 
 export const CartDropdownButton = styled(CustomButton)`
@@ -25,7 +30,6 @@ export const EmptyMessageContainer = styled.span`
 `;
 
 export const CartItemsContainer = styled.div`
-  height: 240px;
   display: flex;
   flex-direction: column;
   overflow: scroll;

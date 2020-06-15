@@ -7,6 +7,10 @@ export const CheckoutCompleteContainer = styled.div`
   flex-direction: column;
   align-items: left;
   margin: 50px auto 0;
+
+  @media screen and (max-width: 800px) {
+    width: 85vw;
+  }
 `;
 
 export const CheckoutCompleteTitle = styled.h2`
