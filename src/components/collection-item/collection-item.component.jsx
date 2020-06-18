@@ -1,5 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectActiveCurrencyLangCode } from '../../redux/currency/currency.selectors';
+import { applyFxRate } from '../../redux/currency/currency.util'; 
 import { addItem } from '../../redux/cart/cart.actions';
 import Price from '../../components/price/price.component';
 import {
@@ -11,9 +14,11 @@ import {
   PriceContainer
 } from './collection-item.styles';
 
-export const CollectionItem = ({ item, addItem }) => {
+export const CollectionItem = ({ item, addItem, langCode }) => {
 
   const { name, price, imageUrl } = item;
+
+  const sale_price = applyFxRate(price, langCode);
 
   return (
     <CollectionItemContainer>
@@ -24,15 +29,19 @@ export const CollectionItem = ({ item, addItem }) => {
       />
       <CollectionFooterContainer>
         <NameContainer>{name}</NameContainer>
-        <PriceContainer><Price price={price} /></PriceContainer>
+        <PriceContainer><Price price={sale_price} /></PriceContainer>
       </CollectionFooterContainer>
-      <AddButton onClick={() => addItem(item)} inverted>Add to cart</AddButton>
+      <AddButton onClick={() => addItem(item, langCode)} inverted>Add to cart</AddButton>
     </CollectionItemContainer>
   )
 }
 
-const mapDispatchToProps = dispatch => ({
-  addItem: item => dispatch(addItem(item))
+const mapStateToProps = createStructuredSelector({
+  langCode: selectActiveCurrencyLangCode
 });
 
-export default connect(null, mapDispatchToProps)(CollectionItem);
+const mapDispatchToProps = dispatch => ({
+  addItem: (item, langCode) => dispatch(addItem(item, langCode))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CollectionItem);

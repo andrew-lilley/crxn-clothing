@@ -1,4 +1,6 @@
-export const addItemToCart = (cartItems, cartItemToAdd) => {
+import { applyFxRate } from '../currency/currency.util';
+
+export const addItemToCart = (cartItems, cartItemToAdd, langCode) => {
   const existingCartItem = cartItems.find(
     cartItem => cartItem.id === cartItemToAdd.id
   );
@@ -13,7 +15,12 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
   return [
     ...cartItems, 
-    { ...cartItemToAdd, quantity: 1 }
+    { 
+      ...cartItemToAdd, 
+      quantity: 1, 
+      default_price: cartItemToAdd.price,
+      price: applyFxRate(cartItemToAdd.price, langCode)
+    }
   ]
 };
 
@@ -35,3 +42,11 @@ export const removeItemFromCart = (cartItems, cartItemToRemove) => {
       : cartItem
   )
 };
+
+export const rebuildCart = (cartItems, langCode) => {
+  return cartItems.map(cartItem => 
+    cartItem.quantity > 0
+      ? { ...cartItem, price: applyFxRate(cartItem.default_price, langCode) }
+      : cartItem
+  )    
+}
