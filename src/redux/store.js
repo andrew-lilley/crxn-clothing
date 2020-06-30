@@ -7,11 +7,10 @@ import rootReducer from './root-reducer';
 // Allows you to use console in Chrome.
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const middlewares = [];
+const middlewares = [thunk];
 
 if (process.env.NODE_ENV === 'development') {
   middlewares.push(logger);
-  middlewares.push(thunk);
 }
 
 export const store = createStore(
