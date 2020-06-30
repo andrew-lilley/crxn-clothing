@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
-import "firebase/analytics";
+import 'firebase/analytics';
 
 const config = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -43,9 +43,50 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
   }
 
   return userRef;
-}
+};
+
+/**
+ * A function to allow us to batch import the shop data into firestore.
+ *
+ * Example call: addCollectionAndDocuments('collections', collectionsArray.map(({ title, items }) => ({ title, items })));
+ *
+ * @param collectionKey
+ * @param objectsToAdd
+ * @returns {Promise<void>}
+ */
+export const addCollectionAndDocuments = async (collectionKey, objectsToAdd) => {
+  const collectionRef = firestore.collection(collectionKey);
+
+  const batch = firestore.batch();
+  objectsToAdd.forEach(obj => {
+    const newDocRef = collectionRef.doc();
+    batch.set(newDocRef, obj);
+  });
+
+  return await batch.commit();
+  
+};
+
+export const convertCollectionsSnapshotToMap = (collections) => {
+  const transformedCollection = collections.docs.map(doc => {
+    const { title, items } = doc.data();
+
+    return {
+      routeName: encodeURI(title.toLowerCase()),
+      id: doc.id,
+      title,
+      items
+    }
+  });
+
+  return transformedCollection.reduce((accumulator, collection) => {
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+  }, {});
+};
 
 export const auth = firebase.auth();
+
 export const firestore = firebase.firestore();
 
 const provider = new firebase.auth.GoogleAuthProvider();
