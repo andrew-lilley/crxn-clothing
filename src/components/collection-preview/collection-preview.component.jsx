@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CollectionItem from '../collection-item/collection-item.component';
 import { CollectionPreviewContainer, TitleContainer, PreviewContainer } from './collection-preview.styles';
 
 const CollectionPreview = ({ title, items }) => (
   <CollectionPreviewContainer>
-    <TitleContainer>{title.toUpperCase()}</TitleContainer>
+    <TitleContainer><Link to={`/shop/${encodeURI(title.toLowerCase())}`}>{title.toUpperCase()}</Link></TitleContainer>
     <PreviewContainer>
       {
         items
