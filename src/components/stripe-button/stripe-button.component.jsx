@@ -3,11 +3,12 @@ import StripeCheckout from 'react-stripe-checkout';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectActiveCurrencyLangCode, selectActiveCurrency } from '../../redux/currency/currency.selectors';
+import { clearCart } from '../../redux/cart/cart.actions';
 import numeral from "numeral";
 import 'numeral/locales/en-gb';
 import 'numeral/locales/de';
 
-export const StripeCheckoutButton = ({ price, history, langCode, currency }) => {
+export const StripeCheckoutButton = ({ price, history, langCode, currency, clearCart }) => {
   
   if (langCode !== 'default') {
     numeral.locale(langCode);
@@ -28,6 +29,7 @@ export const StripeCheckoutButton = ({ price, history, langCode, currency }) => 
 
   const onToken = token => {
     //console.log(token);
+    clearCart();
     history.push('/checkout-complete');
   }
 
@@ -55,4 +57,8 @@ const mapStateToProps = createStructuredSelector({
   currency: selectActiveCurrency
 });
 
-export default connect(mapStateToProps)(StripeCheckoutButton);
+const mapDispatchToProps = dispatch => ({
+  clearCart: () => dispatch(clearCart())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(StripeCheckoutButton);

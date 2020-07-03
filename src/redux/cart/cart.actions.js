@@ -1,12 +1,12 @@
-import { CartActionTypes } from './cart.types';
+import CartActionTypes from './cart.types';
 
 export const toggleCartHidden = (toggle = false) => ({
   type: CartActionTypes.TOGGLE_CART_HIDDEN,
   payload: toggle
 });
 
-export const emptyCart = () => ({
-  type: CartActionTypes.EMPTY_CART
+export const clearCart = () => ({
+  type: CartActionTypes.CLEAR_CART
 });
 
 export const rebuildCart = langCode => ({
