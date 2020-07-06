@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -26,46 +26,37 @@ const SignInAndSignUpPage = lazy(() =>
   import('./pages/sign-in-and-sign-up/sign-in-and-sign-up.component')
 );
 
-export class App extends React.Component {
+const App = ({ checkUserSession, currentUser }) => {
 
-  unsubscribeFromAuth = null;
-
-  componentDidMount() {
-    const { checkUserSession } = this.props;
+  useEffect(() => {
     checkUserSession();
-  }
+  }, [checkUserSession]);
 
-  componentWillUnmount() {
-    this.unsubscribeFromAuth();
-  }
-
-  render() {
-    return (
-      <div>
-        <GlobalStyle />
-        <Header />
-        <Switch>
-          <ErrorBoundary>
-            <Suspense fallback={<Spinner />}>
-              <Route path='/' component={HomePage} exact={true} />
-              <Route path='/shop' component={ShopPage} />
-              <Route path='/signin' exact={true}
-                render={() =>
-                  this.props.currentUser ? (
-                    <Redirect to='/' />
-                  ) : (
-                      <SignInAndSignUpPage />
-                    )
-                }
-              />
-              <Route path='/checkout' component={CheckoutPage} exact={true} />
-              <Route path='/checkout-complete' component={CheckoutCompletePage} exact={true} />
-            </Suspense>
-          </ErrorBoundary>
-        </Switch>
-      </div>
-    )
-  }
+  return (
+    <div>
+      <GlobalStyle />
+      <Header />
+      <Switch>
+        <ErrorBoundary>
+          <Suspense fallback={<Spinner />}>
+            <Route path='/' component={HomePage} exact={true} />
+            <Route path='/shop' component={ShopPage} />
+            <Route path='/signin' exact={true}
+              render={() =>
+                currentUser ? (
+                  <Redirect to='/' />
+                ) : (
+                    <SignInAndSignUpPage />
+                  )
+              }
+            />
+            <Route path='/checkout' component={CheckoutPage} exact={true} />
+            <Route path='/checkout-complete' component={CheckoutCompletePage} exact={true} />
+          </Suspense>
+        </ErrorBoundary>
+      </Switch>
+    </div>
+  )
 }
 
 const mapStateToProps = createStructuredSelector({
