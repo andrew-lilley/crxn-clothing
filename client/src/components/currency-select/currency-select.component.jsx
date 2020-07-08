@@ -10,7 +10,7 @@ import { CurrencySelectorContainer } from './currency-select.styles';
 
 const CurrencySelector = ({ currency, dispatch }) => {
 
-  let options = [
+  const options = [
     { 
       value: 'default', 
       label: '$' 
@@ -22,7 +22,7 @@ const CurrencySelector = ({ currency, dispatch }) => {
     { 
       value: 'de', 
       label: '€' 
-    },
+    }
   ];
 
   return (

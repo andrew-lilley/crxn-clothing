@@ -1,5 +1,6 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectActiveCurrencyLangCode, selectActiveCurrency } from '../../redux/currency/currency.selectors';
@@ -9,7 +10,7 @@ import 'numeral/locales/en-gb';
 import 'numeral/locales/de';
 
 export const StripeCheckoutButton = ({ price, history, langCode, currency, clearCart }) => {
-  
+
   if (langCode !== 'default') {
     numeral.locale(langCode);
   }
@@ -17,7 +18,7 @@ export const StripeCheckoutButton = ({ price, history, langCode, currency, clear
     numeral.reset();
   }
 
-  const currencyString = {
+  const currencyStrings = {
     '£': 'GBP',
     '$': 'USD',
     '€': 'EUR'
@@ -25,13 +26,31 @@ export const StripeCheckoutButton = ({ price, history, langCode, currency, clear
 
   // Price needs to be in cents, pence.
   const priceForStripe = price * 100;
+  const currencyString = currencyStrings[currency];
   const publishableKey = process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY;
+  const payment_url = (process.env.REACT_APP_STRIPE_PAYMENT_URL) ? process.env.REACT_APP_STRIPE_PAYMENT_URL : 'payment';
 
   const onToken = token => {
-    //console.log(token);
-    clearCart();
-    history.push('/checkout-complete');
-  }
+    axios({
+      url: payment_url,
+      method: 'post',
+      data: {
+        amount: priceForStripe,
+        token: token,
+        currency: currencyString
+      }
+    })
+    .then(response => {
+      clearCart();
+      history.push('/checkout-complete');
+    })
+    .catch(error => {
+      console.log('Payment Error: ', error);
+      alert(
+        'There was an issue with your payment! Please check the details on your card and try again.'
+      );
+    });
+  };
 
   return (
     <StripeCheckout 
@@ -40,11 +59,10 @@ export const StripeCheckoutButton = ({ price, history, langCode, currency, clear
       billingAddress
       shippingAddress
       zipCode
-      //image='https://sendeyo.com/up/d/f3eb2117da'
-      image='/images/stripe/crown.svg'
+      image={`${process.env.PUBLIC_URL}/images/stripe/crown.svg`}
       description={`Your total is ${numeral(price).format('$0,0.00')}`}
       amount={priceForStripe}
-      currency={currencyString[currency]}
+      currency={currencyString}
       panelLabel='Pay Now'
       token={onToken}
       stripeKey={publishableKey}
