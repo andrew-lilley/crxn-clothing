@@ -106,7 +106,7 @@ export const firestore = firebase.firestore();
 firestore.settings({
   cacheSizeBytes: firestore.CACHE_SIZE_UNLIMITED
 });
-firestore.enablePersistence();
+firestore.enablePersistence({ synchronizeTabs: true });
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });
