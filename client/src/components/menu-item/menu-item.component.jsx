@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { AssetLocation } from '../../utils';
 import {
   MenuItemContainer,
   BackgroundImageContainer,
@@ -14,7 +15,7 @@ const MenuItem = ({ title, imageUrl, size, linkUrl, match, history }) => (
     size={size}
     onClick={() => history.push(`${match.url}${linkUrl}`)}>
     <BackgroundImageContainer style={{
-        backgroundImage: `url(${imageUrl})`
+        backgroundImage: `url(${AssetLocation(imageUrl)})`
       }} 
     />
     <ContentContainer>

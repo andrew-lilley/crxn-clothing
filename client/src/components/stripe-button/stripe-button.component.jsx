@@ -8,6 +8,7 @@ import { clearCart } from '../../redux/cart/cart.actions';
 import numeral from "numeral";
 import 'numeral/locales/en-gb';
 import 'numeral/locales/de';
+import CrwnLogo from '../../assets/images/stripe/crown.svg';
 
 export const StripeCheckoutButton = ({ price, history, langCode, currency, clearCart }) => {
 
@@ -59,7 +60,7 @@ export const StripeCheckoutButton = ({ price, history, langCode, currency, clear
       billingAddress
       shippingAddress
       zipCode
-      image={`${process.env.PUBLIC_URL}/images/stripe/crown.svg`}
+      image={CrwnLogo}
       description={`Your total is ${numeral(price).format('$0,0.00')}`}
       amount={priceForStripe}
       currency={currencyString}

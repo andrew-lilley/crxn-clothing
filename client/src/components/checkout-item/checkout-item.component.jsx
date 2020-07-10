@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Price from '../price/price.component';
 import { removeItem, addItem, clearItem } from '../../redux/cart/cart.actions';
+import { AssetLocation } from '../../utils';
 import {
   CheckoutItemContainer,
   ImageContainer,
@@ -17,7 +18,7 @@ export const CheckoutItem = ({ cartItem, removeItem, addItem, clearItem }) => {
   return (
     <CheckoutItemContainer>
       <ImageContainer>
-        <img src={imageUrl} alt={name} />
+        <img src={AssetLocation(imageUrl)} alt={name} />
       </ImageContainer>
       <TextContainer>{name}</TextContainer>
       <QuantityContainer>

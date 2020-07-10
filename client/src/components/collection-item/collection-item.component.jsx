@@ -5,6 +5,7 @@ import { selectActiveCurrencyLangCode } from '../../redux/currency/currency.sele
 import { applyFxRate } from '../../redux/currency/currency.util'; 
 import { addItem } from '../../redux/cart/cart.actions';
 import Price from '../../components/price/price.component';
+import { AssetLocation } from '../../utils';
 import {
   CollectionItemContainer,
   CollectionFooterContainer,
@@ -24,7 +25,7 @@ export const CollectionItem = ({ item, addItem, langCode }) => {
     <CollectionItemContainer>
       <BackgroundImage
         style={{
-          backgroundImage: `url(${imageUrl})`
+          backgroundImage: `url(${AssetLocation(imageUrl)})`
         }}
       />
       <CollectionFooterContainer>

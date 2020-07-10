@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PageNotFoundLogo from '../../assets/images/404.png';
 import { 
   ErrorImageOverlay, 
   ErrorImageContainer, 
@@ -32,7 +33,7 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasErrored) {
       return (
         <ErrorImageOverlay>
-          <ErrorImageContainer imageUrl='/images/404.png' />
+          <ErrorImageContainer imageUrl={PageNotFoundLogo} />
           <ErrorImageTitle>Our Dog Ate this Page</ErrorImageTitle>
           <ErrorImageText>Our dog is cute but honestly a menace. Where are my trainers? Where is my jacket? Where is the hat that I was going to buy for my Aunt’s birthday? I hope that you can find what you are looking for in <Link to='/shop'>our shop</Link></ErrorImageText>
         </ErrorImageOverlay>
