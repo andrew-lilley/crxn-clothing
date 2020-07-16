@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CheckoutCompletePage component 1`] = `
+<styled.div>
+  <styled.h2>
+    Order Complete
+  </styled.h2>
+  <p>
+    Your payment has been successful.
+  </p>
+  <p>
+    Thank you for placing your order with CRXN Clothing.
+  </p>
+</styled.div>
+`;

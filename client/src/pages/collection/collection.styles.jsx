@@ -23,3 +23,6 @@ export const CollectionItemsContainer = styled.div`
     grid-gap: 15px;
   }
 `;
+
+// This is required for testing.
+CollectionItemsContainer.displayName = 'CollectionItemsContainer';

@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render CheckoutPage component 1`] = `
+<styled.div>
+  <styled.div>
+    <styled.div>
+      <span>
+        Product
+      </span>
+    </styled.div>
+    <styled.div>
+      <span>
+        Description
+      </span>
+    </styled.div>
+    <styled.div>
+      <span>
+        Quantity
+      </span>
+    </styled.div>
+    <styled.div>
+      <span>
+        Price
+      </span>
+    </styled.div>
+    <styled.div>
+      <span>
+        Remove
+      </span>
+    </styled.div>
+  </styled.div>
+  <styled.div>
+    <Connect(Price)
+      label="TOTAL"
+    />
+  </styled.div>
+  <styled.div>
+    <p>
+      This is a demo website. Please only use one the following test credit card details:
+    </p>
+    <ul>
+      <li>
+        Successful payments: 4242 4242 424 24242, Exp: 01/21, CVV: 123
+      </li>
+      <li>
+        3D secure payments: 4000 0025 0000 3155, Exp: 01/21, CVV: 123
+      </li>
+      <li>
+        Declined payments: 4000 0000 0000 9995, Exp: 01/21, CVV: 123
+      </li>
+    </ul>
+  </styled.div>
+  <Connect(StripeCheckoutButton) />
+</styled.div>
+`;
