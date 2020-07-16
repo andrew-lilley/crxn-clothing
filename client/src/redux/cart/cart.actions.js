@@ -20,7 +20,6 @@ export const addItem = (item, langCode) => ({
     item,
     langCode
   }
-
 });
 
 export const removeItem = item => ({

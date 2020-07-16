@@ -16,7 +16,7 @@ const config = {
 
 firebase.initializeApp(config);
 
-if (process.env.NODE_ENV !== 'test' && process.env.NODE_ENV !== 'development') {
+if (process.env.NODE_ENV === 'production') {
   firebase.analytics();
 }
 
@@ -98,15 +98,17 @@ export const auth = firebase.auth();
 
 export const firestore = firebase.firestore();
 
-// Configure offline persistence. 
-// By default, firebase checks for the server first.
-// snapshot.metadata.fromCache.
-// For an actual ecommerce website, we'd have to think about pricing
-// and checking out and how to indicate that the app is in offline mode.
-firestore.settings({
-  cacheSizeBytes: firestore.CACHE_SIZE_UNLIMITED
-});
-firestore.enablePersistence({ synchronizeTabs: true });
+if (process.env.NODE_ENV === 'production') {
+  // Configure offline persistence. 
+  // By default, firebase checks for the server first.
+  // snapshot.metadata.fromCache.
+  // For an actual ecommerce website, we'd have to think about pricing
+  // and checking out and how to indicate that the app is in offline mode.
+  firestore.settings({
+    cacheSizeBytes: firestore.CACHE_SIZE_UNLIMITED
+  });
+  firestore.enablePersistence({ synchronizeTabs: true });
+}
 
 export const googleProvider = new firebase.auth.GoogleAuthProvider();
 googleProvider.setCustomParameters({ prompt: 'select_account' });

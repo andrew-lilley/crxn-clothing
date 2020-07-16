@@ -44,7 +44,7 @@ export function* signInWithEmail({ payload: { email, password } }) {
   }
 }
 
-function* isUserAuthenticated() {
+export function* isUserAuthenticated() {
   try {
     const userAuth = yield getCurrentUser();
     if (!userAuth) return;
