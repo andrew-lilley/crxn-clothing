@@ -5,7 +5,7 @@ import FormInput from '../../components/form-input/form-input.component';
 import CustomButton from '../../components/custom-button/custom-button.component';
 import { SignInContainer, SignInTitle, ButtonsBarContainer } from './sign-in.styles';
 
-const SignIn = ({ emailSignInStart, googleSignInStart }) => {
+export const SignIn = ({ emailSignInStart, googleSignInStart }) => {
 
   const [ userCredentials, setUserCredentials ] = useState({ email: '', password: '' });
   const { email, password } = userCredentials;

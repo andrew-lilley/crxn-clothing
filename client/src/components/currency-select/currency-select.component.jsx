@@ -8,7 +8,7 @@ import { toggleCartHidden } from '../../redux/cart/cart.actions';
 import { rebuildCart } from '../../redux/cart/cart.actions';
 import { CurrencySelectorContainer } from './currency-select.styles';
 
-const CurrencySelector = ({ currency, dispatch }) => {
+export const CurrencySelector = ({ currency, dispatch }) => {
 
   const options = [
     { 

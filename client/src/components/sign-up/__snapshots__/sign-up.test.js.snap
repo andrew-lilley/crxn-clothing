@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUp component should render SignUp component 1`] = `
+<styled.div>
+  <styled.h2>
+    I do not have an account
+  </styled.h2>
+  <span>
+    Sign up with your email and password
+  </span>
+  <form
+    onSubmit={[Function]}
+  >
+    <FormInput
+      handleChange={[Function]}
+      label="Display Name"
+      name="displayName"
+      required={true}
+      type="text"
+      value=""
+    />
+    <FormInput
+      handleChange={[Function]}
+      label="Email"
+      name="email"
+      required={true}
+      type="email"
+      value=""
+    />
+    <FormInput
+      handleChange={[Function]}
+      label="Password"
+      name="password"
+      required={true}
+      type="password"
+      value=""
+    />
+    <FormInput
+      handleChange={[Function]}
+      label="Confirm Password"
+      name="confirmPassword"
+      required={true}
+      type="password"
+      value=""
+    />
+    <styled.div>
+      <CustomButton
+        type="submit"
+      >
+        SIGN UP
+      </CustomButton>
+    </styled.div>
+  </form>
+</styled.div>
+`;

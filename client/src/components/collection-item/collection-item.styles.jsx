@@ -47,6 +47,9 @@ export const AddButton = styled(CustomButton)`
   }
 `;
 
+// This is required for testing.
+AddButton.displayName = 'AddButton';
+
 export const BackgroundImage = styled.div`
   width: 100%;
   height: 95%;
@@ -56,6 +59,9 @@ export const BackgroundImage = styled.div`
   background-image: ${({ imageUrl }) => `url(${imageUrl})`};
 `;
 
+// This is required for testing.
+BackgroundImage.displayName = 'BackgroundImage';
+
 export const CollectionFooterContainer = styled.div`
   width: 100%;
   height: 5%;
@@ -64,10 +70,19 @@ export const CollectionFooterContainer = styled.div`
   font-size: 18px;
 `;
 
+// This is required for testing.
+CollectionFooterContainer.displayName = 'CollectionFooterContainer';
+
 export const NameContainer = styled.span`
   margin-bottom: 15px;
 `;
 
+// This is required for testing.
+NameContainer.displayName = 'NameContainer';
+
 export const PriceContainer = styled.span`
   text-align: right;
 `;
+
+// This is required for testing.
+PriceContainer.displayName = 'PriceContainer';

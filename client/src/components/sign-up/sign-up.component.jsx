@@ -5,7 +5,7 @@ import CustomButton from '../custom-button/custom-button.component';
 import { signUpStart } from '../../redux/user/user.actions';
 import { SignUpContainer, SignUpTitle, ButtonsBarContainer } from './sign-up.styles';
 
-const SignUp = ({ signUpStart }) => {
+export const SignUp = ({ signUpStart }) => {
 
   const [ userCredentials, setUserCredentials ] = useState({
     displayName: '',

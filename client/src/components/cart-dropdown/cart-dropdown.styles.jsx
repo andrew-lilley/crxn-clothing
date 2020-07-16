@@ -24,6 +24,7 @@ export const CartDropdownButton = styled(CustomButton)`
   margin-top: auto;
 `;
 
+// This is required for testing.
 CartDropdownButton.displayName = 'CartDropdownButton';
 
 export const EmptyMessageContainer = styled.span`
@@ -31,6 +32,7 @@ export const EmptyMessageContainer = styled.span`
   margin: 50px auto;
 `;
 
+// This is required for testing.
 EmptyMessageContainer.displayName = 'EmptyMessageContainer';
 
 export const CartItemsContainer = styled.div`

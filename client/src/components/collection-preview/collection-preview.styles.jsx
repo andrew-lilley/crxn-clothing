@@ -19,6 +19,9 @@ export const TitleContainer = styled.h1`
   }
 `;
 
+// This is required for testing.
+TitleContainer.displayName = 'TitleContainer';
+
 export const PreviewContainer = styled.div`
   display: flex;
   justify-content: space-between;

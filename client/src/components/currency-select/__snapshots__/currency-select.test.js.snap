@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBoundary component should render CurrencySelector component 1`] = `
+<CurrencySelectorContainer
+  onClick={[Function]}
+>
+  <StateManager
+    defaultInputValue=""
+    defaultMenuIsOpen={false}
+    defaultValue={null}
+    onChange={[Function]}
+    options={
+      Array [
+        Object {
+          "label": "$",
+          "value": "default",
+        },
+        Object {
+          "label": "£",
+          "value": "en-gb",
+        },
+        Object {
+          "label": "€",
+          "value": "de",
+        },
+      ]
+    }
+    placeholder=""
+    value={
+      Object {
+        "label": "default",
+      }
+    }
+  />
+</CurrencySelectorContainer>
+`;

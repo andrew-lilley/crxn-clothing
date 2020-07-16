@@ -42,7 +42,13 @@ export const QuantityContainer = styled(TextContainer)`
   }
 `;
 
+// This is required for testing.
+QuantityContainer.displayName = 'QuantityContainer';
+
 export const RemoveButtonContainer = styled.div`
   padding-left: 12px;
   cursor: pointer;
 `;
+
+// This is required for testing.
+RemoveButtonContainer.displayName = 'RemoveButtonContainer';

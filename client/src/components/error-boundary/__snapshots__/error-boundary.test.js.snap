@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBoundary component should render ErrorBoundary component with an error 1`] = `
+<styled.div>
+  <styled.div
+    imageUrl="404.png"
+  />
+  <styled.h2>
+    Our Dog Ate this Page
+  </styled.h2>
+  <styled.p>
+    Our dog is cute but honestly a menace. Where are my trainers? Where is my jacket? Where is the hat that I was going to buy for my Aunt’s birthday? I hope that you can find what you are looking for in 
+    <Link
+      to="/shop"
+    >
+      our shop
+    </Link>
+  </styled.p>
+</styled.div>
+`;
+
+exports[`ErrorBoundary component should render ErrorBoundary component with no error 1`] = `<HomePage />`;
