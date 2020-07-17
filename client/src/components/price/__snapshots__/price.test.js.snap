@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Price component should render Price component with a label 1`] = `
+<Fragment>
+  Total: 
+  £100.00
+</Fragment>
+`;
+
+exports[`Price component should render Price component with default langCode 1`] = `
+<Fragment>
+  $100.00
+</Fragment>
+`;
+
+exports[`Price component should render Price component with no label 1`] = `
+<Fragment>
+  £100.00
+</Fragment>
+`;
